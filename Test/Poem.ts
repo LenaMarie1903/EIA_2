@@ -10,8 +10,8 @@ namespace Poem {
 
    for (let i = 6; i >= 1; i--) {
       //console.log(i)
-      let sentcence: string = getVerse(Subjekt, verb, Objekt);
-      console.log(sentcence)
+      let sentence: string = getVerse(Subjekt, verb, Objekt);
+      console.log(sentence)
       //let erstes=[];
       //let zweites=[];
       //let drittens=[];
