@@ -1,5 +1,5 @@
 namespace Poem {
-   debugger;
+   
    let Subjekt: string[] = ["Harry", "Hermine", "Ron", "Hagrid", "Snape", "Dumbledore"]
    let verb: string[] = ["braut", "liebt", "studiert", "hasst", "zaubert", "zerstört"]
    let Objekt: string[] = ["Zaubertränke", "den Grimm", "Lupin", "Hogwarts", "die Karte des Rumtreibers", "Dementoren"]
@@ -11,28 +11,30 @@ namespace Poem {
    for (let i = 6; i >= 1; i--) {
       //console.log(i)
       let sentcence: string = getVerse(Subjekt, verb, Objekt);
-      //console.log(sentcence)
+      console.log(sentcence)
       //let erstes=[];
       //let zweites=[];
       //let drittens=[];
 
    }
 
-   function getVerse(_Subjekt: string[], _verb: string[], _Objekt: string[]): string {
+   function getVerse(_Subj: string[], _ver: string[], _Obj: string[]): string {
 
       let vers : string = "";
 
-      let zufallzahl_S : number = Math.floor(Math.random()*_Subjekt.length);
-      let zufallzahl_v : number = Math.floor(Math.random()*_verb.length);
-      let zufallzahl_O : number = Math.floor(Math.random()*_Objekt.length);
+      let zufallzahl_S : number = Math.floor(Math.random()*_Subj.length);
+      let zufallzahl_v : number = Math.floor(Math.random()*_ver.length);
+      let zufallzahl_O : number = Math.floor(Math.random()*_Obj.length);
 
-      console.log(zufallzahl_S);
+      //console.log(zufallzahl_S);
+      //Der random Wert wird aus Array rausgeschnitten und in Variable vers reingeschrieben als string. Die 1 ist die Anzahl die gesplicet wird. Da ich einem string kein Array anhängen kann, muss ich die Stelle angeben hier O (erste Stelle)
+      vers = _Subj.splice(zufallzahl_S, 1)[0] + " "  + _ver.splice(zufallzahl_v, 1)[0] + " " + _Obj.splice(zufallzahl_O, 1)[0];
      
       
 
 
       //let result: string = _Subjekt[0];
-      //return result;
+      return vers;
       
      
    }
