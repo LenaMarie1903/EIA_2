@@ -20,7 +20,7 @@ namespace Poem {
 
    function getVerse(_Subjekt: string[], _verb: string[], _Objekt: string[]): string {
 
-      let vers : string = ""; bbbb
+      let vers : string = "";
 
       let zufallzahl_S : number = Math.floor(Math.random)*Subjekt.length
 
