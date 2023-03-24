@@ -8,7 +8,7 @@ namespace Poem {
    //console.log(verb.length);
    //brewconsole.log(Objekt.length);
 
-   for (let i = 6; i >= 1; i--) {
+   for (let i = 6; i >= 1;i--) {
       //console.log(i)
       let sentence: string = getVerse(Subjekt, verb, Objekt);
       console.log(sentence)
