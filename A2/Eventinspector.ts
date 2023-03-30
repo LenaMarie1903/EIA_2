@@ -31,7 +31,7 @@ function setInfoBox(_event: MouseEvent) {
     let xvalue: number = _event.clientX;
     let yvalue: number = _event.clientY;
     if(span != null){
-        span.innerText= "Mouseposition: " + xvalue + ","  + yvalue + _event.target;
+        span.innerText= "Mouseposition: X: " + xvalue + ", Y: "  + yvalue + _event.target;
 
         span.setAttribute('style','right: xvalue + 10px');
         span.setAttribute('style', 'top: yvalue + 10px');
