@@ -15,11 +15,11 @@ function handleLoad () {
     document.body.addEventListener("click",logInfo);
     document.body.addEventListener("keyup", logInfo);
 
-    document.getElementById("#div0")?.addEventListener("click",logInfo);
-    document.getElementById("#div0")?.addEventListener("keyup",logInfo);
+    document.getElementById("div0")!.addEventListener("click",logInfo);
+    document.getElementById("div0")!.addEventListener("keyup",logInfo);
 
-    document.getElementById("#div1")?.addEventListener("click",logInfo);
-    document.getElementById("#div1")?.addEventListener("keyup",logInfo);
+    document.getElementById("div1")!.addEventListener("click",logInfo);
+    document.getElementById("div1")!.addEventListener("keyup",logInfo);
 
 }
 //document.body.addEventListener("mousemove", setInfoBox); übergint das dem _eveent 
@@ -27,14 +27,21 @@ function handleLoad () {
 function setInfoBox(_event: MouseEvent) {
 
  //Er weiß nicht,dass span wirklich existiert. Daher muss ich durch eine if Funktion  überprüfeb, ob das HTML Element span in HTML wirklich vorhanden ist.
-    let span : HTMLElement|null =document.getElementById("#span0");
+    let span : HTMLElement|null =document.getElementById("span0");
     let xvalue: number = _event.clientX;
     let yvalue: number = _event.clientY;
+
+    let offsetX:number=_event.clientX +10 ;
+    let offsetY:number=_event.clientY +10 ;
+
     if(span != null){
         span.innerText= "Mouseposition: X: " + xvalue + ", Y: "  + yvalue + _event.target;
 
-        span.setAttribute('style','right: xvalue + 10px');
-        span.setAttribute('style', 'top: yvalue + 10px');
+        span.style.left= offsetX + "px";
+        span.style.top= offsetY + "px"; 
+        //span.setAttribute('style','right: xvalue + 10px');
+        //span.style.top=offset+ yvalue + '10px'
+        //span.setAttribute('style', 'top: yvalue + 10px');
     }
 
     //span.setAttribute('style','right: xvalue + 10px');
