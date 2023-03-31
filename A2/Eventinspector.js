@@ -13,7 +13,7 @@ var Aufgabe2;
         document.getElementById("div1").addEventListener("click", logInfo);
         document.getElementById("div1").addEventListener("keyup", logInfo);
     }
-    //document.body.addEventListener("mousemove", setInfoBox); übergint das dem _eveent 
+    //document.body.addEventListener("mousemove", setInfoBox); übergibt das dem _event 
     //Frage Woher weiß Zeile 9, dass es ein mousemove Event ist? 
     function setInfoBox(_event) {
         //Er weiß nicht,dass span wirklich existiert. Daher muss ich durch eine if Funktion  überprüfeb, ob das HTML Element span in HTML wirklich vorhanden ist.
@@ -35,6 +35,14 @@ var Aufgabe2;
     }
     function logInfo(_event) {
         console.log(_event.target, _event.currentTarget, _event.type, _event);
+    }
+    let HTMLbutton = document.createElement("button");
+    HTMLbutton.innerHTML = "Button";
+    HTMLbutton.className = "button";
+    document.querySelector("#div0").appendChild(HTMLbutton);
+    HTMLbutton.addEventListener('click', button_click);
+    function button_click() {
+        console.log("Hey,dass ist mein Button");
     }
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Eventinspector.js.map
