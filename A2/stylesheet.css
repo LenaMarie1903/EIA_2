@@ -1,20 +1,32 @@
 span {
 position: fixed;
-offset: right;}
+offset: right;
+}
 
 #div0{
 
     background-color: aquamarine;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-left: 40px;
 
 }
 
 #div1{
 
     background-color: aqua;
-    padding-bottom: 60px;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-left: 280px;
 }
 .button{
 
     border-radius: 30px;
-    padding-left: 60px;
+  
+}
+
+h1{
+  color: purple;
 }
