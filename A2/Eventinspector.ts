@@ -5,8 +5,8 @@ Aufgabe: <L02_EventInspetor>
 Name: <Lena Fleig>
 Matrikel: <272304>
 Datum: <01.04.2023>
-In Zusammenarbeit mit Medin Flaig
-Quellen: < Laura Kupferschmid, Lara Halmosi,>
+In Zusammenarbeit mit Medin Flaig und mit Hilfe von Laura Kupferschmid, Lara Halmosi
+Quellen: < >
 */
 
     window.addEventListener("load", handleLoad);
