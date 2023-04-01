@@ -52,10 +52,10 @@ Quellen: < Laura Kupferschmid, Lara Halmosi,>
     function customEvent(_event) {
         let customevent = new CustomEvent("LOL", { bubbles: true, detail: { bubble: setInfoBox } });
         HTMLbutton.dispatchEvent(customevent);
+        button_click();
     }
-    /*function button_click() {
-    
-        console.log("LOL")
-    }*/
+    function button_click() {
+        console.log("LOL");
+    }
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Eventinspector.js.map

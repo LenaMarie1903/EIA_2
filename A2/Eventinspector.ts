@@ -75,18 +75,20 @@ Quellen: < Laura Kupferschmid, Lara Halmosi,>
     HTMLbutton.addEventListener('click', customEvent)
 
     function customEvent(_event: MouseEvent) {
-let customevent = new CustomEvent("LOL", {bubbles: true, detail:{bubble: setInfoBox}});
-HTMLbutton.dispatchEvent(customevent);
+        let customevent = new CustomEvent("LOL", { bubbles: true, detail: { bubble: setInfoBox } });
+        HTMLbutton.dispatchEvent(customevent);
+        button_click()
 
     }
-  
 
-  
 
-/*function button_click() {
 
-    console.log("LOL") 
-}*/
+
+    function button_click() {
+    
+        console.log("LOL") 
+    }
+    
 
 
 
