@@ -6,8 +6,8 @@ Aufgabe: <L02_EventInspetor>
 Name: <Lena Fleig>
 Matrikel: <272304>
 Datum: <01.04.2023>
-In Zusammenarbeit mit Medin Flaig und mit Hilfe von Laura Kupferschmid, Lara Halmosi
-Quellen: < >
+In Zusammenarbeit mit Medin Flaig und mit Hilfe von Laura Kupferschmid, Lara Halmosi,Madeleine Hansen
+Quellen: <https://stackoverflow.com/questions/43001679/how-do-you-create-custom-event-in-typescript >
 */
     window.addEventListener("load", handleLoad);
     function handleLoad() {
