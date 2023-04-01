@@ -6,7 +6,7 @@ Name: <Lena Fleig>
 Matrikel: <272304>
 Datum: <01.04.2023>
 In Zusammenarbeit mit Medin Flaig
-Quellen: < Laura Kupferschmidt, Lara Halmosi,>
+Quellen: < Laura Kupferschmid, Lara Halmosi,>
 */
 
     window.addEventListener("load", handleLoad);
@@ -72,13 +72,16 @@ Quellen: < Laura Kupferschmidt, Lara Halmosi,>
     HTMLbutton.className = "button";
     document.querySelector("#div0")!.appendChild(HTMLbutton);
 
+    HTMLbutton.addEventListener('click', customEvent)
+
     function customEvent(_event: MouseEvent) {
 let customevent = new CustomEvent("LOL", {bubbles: true, detail:{bubble: setInfoBox}});
 HTMLbutton.dispatchEvent(customevent);
 
     }
+  
 
-    //HTMLbutton.addEventListener('click', button_click)
+  
 
 /*function button_click() {
 
