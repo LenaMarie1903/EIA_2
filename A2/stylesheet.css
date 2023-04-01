@@ -3,28 +3,28 @@ position: fixed;
 offset: right;
 }
 
+
+div{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 200px;
+}
+
 #div0{
 
     background-color: aquamarine;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin-left: 40px;
-
+    margin-left: 10%;
 }
 
 #div1{
 
     background-color: aqua;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    margin-left: 280px;
+    margin-left: 50%;
 }
 .button{
 
     border-radius: 30px;
-  
 }
 
 h1{
