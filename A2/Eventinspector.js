@@ -6,7 +6,7 @@ Aufgabe: <L02_EventInspetor>
 Name: <Lena Fleig>
 Matrikel: <272304>
 Datum: <01.04.2023>
-In Zusammenarbeit mit Medin Flaig und mit Hilfe von Laura Kupferschmid, Lara Halmosi,Madeleine Hansen
+In Zusammenarbeit mit Medin Flaig und mit Hilfe von Laura Kupferschmid und Lara Halmosi
 Quellen: <https://stackoverflow.com/questions/43001679/how-do-you-create-custom-event-in-typescript >
 */
     window.addEventListener("load", handleLoad);
@@ -56,8 +56,8 @@ Quellen: <https://stackoverflow.com/questions/43001679/how-do-you-create-custom-
      }*/
     function button_click() {
         let customevent = new CustomEvent("MeinEvent", { bubbles: true, detail: { name: "Minka" } });
-        document.dispatchEvent(customevent);
         document.addEventListener("MeinEvent", (e) => console.log(e.bubbles, e.detail.name));
+        document.dispatchEvent(customevent);
     }
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Eventinspector.js.map
