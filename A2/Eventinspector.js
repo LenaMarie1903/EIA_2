@@ -1,6 +1,14 @@
 "use strict";
 var Aufgabe2;
 (function (Aufgabe2) {
+    /*
+Aufgabe: <L02_EventInspetor>
+Name: <Lena Fleig>
+Matrikel: <272304>
+Datum: <01.04.2023>
+In Zusammenarbeit mit Medin Flaig
+Quellen: < Laura Kupferschmidt, Lara Halmosi,>
+*/
     window.addEventListener("load", handleLoad);
     function handleLoad() {
         document.addEventListener("mousemove", setInfoBox);
@@ -40,9 +48,14 @@ var Aufgabe2;
     HTMLbutton.innerHTML = "Button";
     HTMLbutton.className = "button";
     document.querySelector("#div0").appendChild(HTMLbutton);
-    HTMLbutton.addEventListener('click', button_click);
-    function button_click() {
-        console.log("Hey,dass ist mein Button");
+    function customEvent(_event) {
+        let customevent = new CustomEvent("LOL", { bubbles: true, detail: { bubble: setInfoBox } });
+        HTMLbutton.dispatchEvent(customevent);
     }
+    //HTMLbutton.addEventListener('click', button_click)
+    /*function button_click() {
+    
+        console.log("LOL")
+    }*/
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Eventinspector.js.map

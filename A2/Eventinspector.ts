@@ -1,5 +1,14 @@
 namespace Aufgabe2 {
 
+    /*
+Aufgabe: <L02_EventInspetor>
+Name: <Lena Fleig>
+Matrikel: <272304>
+Datum: <01.04.2023>
+In Zusammenarbeit mit Medin Flaig
+Quellen: < Laura Kupferschmidt, Lara Halmosi,>
+*/
+
     window.addEventListener("load", handleLoad);
 
 
@@ -63,12 +72,22 @@ namespace Aufgabe2 {
     HTMLbutton.className = "button";
     document.querySelector("#div0")!.appendChild(HTMLbutton);
 
-    HTMLbutton.addEventListener('click', button_click)
+    function customEvent(_event: MouseEvent) {
+let customevent = new CustomEvent("LOL", {bubbles: true, detail:{bubble: setInfoBox}});
+HTMLbutton.dispatchEvent(customevent);
 
-function button_click() {
+    }
 
-    console.log("Hey,dass ist mein Button") 
-}
+    //HTMLbutton.addEventListener('click', button_click)
+
+/*function button_click() {
+
+    console.log("LOL") 
+}*/
+
+
+
+
 
 
 
