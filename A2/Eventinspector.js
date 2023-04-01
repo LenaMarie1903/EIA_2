@@ -49,15 +49,20 @@ Quellen: <https://stackoverflow.com/questions/43001679/how-do-you-create-custom-
     HTMLbutton.className = "button";
     document.querySelector("#div0").appendChild(HTMLbutton);
     HTMLbutton.addEventListener('click', button_click);
-    /* function customEvent(_event: MouseEvent) {
-         
-         button_click()
- 
-     }*/
+    let customevent = new CustomEvent("MeinEvent", { bubbles: true, detail: { name: "Minka" } });
     function button_click() {
-        let customevent = new CustomEvent("MeinEvent", { bubbles: true, detail: { name: "Minka" } });
-        document.addEventListener("MeinEvent", (e) => console.log(e.bubbles, e.detail.name));
+        //let customevent = new CustomEvent("MeinEvent", { bubbles: true, detail: { name: "Minka"} });
+        document.addEventListener("MeinEvent", customEvent);
         document.dispatchEvent(customevent);
     }
+    function customEvent() {
+        console.log(customevent.bubbles);
+        console.log(customevent.detail);
+    }
+    /* function customEvent(_event: MouseEvent) {
+        
+        button_click()
+
+    }*/
 })(Aufgabe2 || (Aufgabe2 = {}));
 //# sourceMappingURL=Eventinspector.js.map
