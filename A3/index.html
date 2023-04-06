@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToDo</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="toDoList.js" defer></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 </head>
 <body>
     <h1>ToDo-Liste</h1>
     <p></p>
     <h2>Erstelle eine Aufgabe</h2>
-    <button id="finish"> Fertig</button>
-    <button id="edit">Edit List</button>
+   
     <div id="div">
         
        
@@ -24,17 +26,21 @@
             <input type="datetime-local" name="deadline">
             <label> in Bearbeitung:</label>
             <input type="checkbox" name="inprogress">
+            <button id="finish">Fertig</button>
         </fieldset>
         
     </div>
 
     <div class="boss">
         <input type="checkbox" name="done">
-        <input type="text" name="task" placeholder="">
-        <input type="text" name="comment" placeholder="Kommentar">
-        <input type="text" name="person" placeholder="Name">
+        <input type="text" name="task" placeholder="Aufgabe" value="Spülmaschine ausräumen">
+        <input type="text" name="comment" placeholder="Kommentar" value="Bitte bis morgen erledigen.">
+        <input type="text" name="person" placeholder="Name" value="Luisa">
         <input type="datetime-local" name="deadline">
         <label> in Bearbeitung:</label>
-        <input type="checkbox" name="inprogress"></div>
+        <input type="checkbox" name="inprogress">
+        <button id="edit">Ändern</button>
+        <i class="fa fa-trash-alt" id="trashbin"></i>
+    </div>
 </body>
 </html>

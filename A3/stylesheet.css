@@ -1,0 +1,12 @@
+button{
+    border-radius: 20px;
+    background-color:blue;
+    color: white;
+    border-color: blue;
+}
+
+button:active{
+    background-color: rgb(55, 196, 83) ;
+   color:rgb(116, 31, 213);
+    border-color: rgb(26, 255, 0);
+}
