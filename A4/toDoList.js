@@ -24,18 +24,32 @@ var ToDo;
         }
     ];
     window.addEventListener("load", handleload);
+    let taskinput = document.querySelector("#TASK");
+    let commentinput = document.querySelector("#COMMENT");
+    let personinput = document.querySelector("#PERSON");
+    let dateinput = document.querySelector("#DATE");
+    let wrapper = document.querySelector(".boss");
+    let secondcheckbox = document.querySelector("#checkB");
     function handleload(_event) {
-        document.querySelector("#finish").addEventListener('click', createTodo);
-        document.querySelector("#edit").addEventListener('click', enableEditing);
-        document.querySelector("#trashbin").addEventListener('click', deleteTodo);
+        taskinput.value = ""; //Damit die Inputfelder beim Neuladen leer sind 
+        commentinput.value = "";
+        personinput.value = "";
+        dateinput.value = "";
+        secondcheckbox.checked = false; //Checkbox soll grundsetzlich nicht angekreuzt sein 
         callInterface();
+        document.querySelector("#finish").addEventListener('click', arrayPush);
+        //document.querySelector("#edit")!.addEventListener('click', enableEditing);
+        //document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
+    }
+    function arrayPush() {
     }
     function callInterface() {
         for (let i = 0; i < todoliste.length; i++) {
             console.log(todoliste[i]);
             let newDiv = document.createElement("div");
             newDiv.className = "newDivCSS";
-            let wrapper = document.querySelector(".boss");
+            newDiv.id = "" + i; // Damit wir später die verscheiden newDiv aus den verscheiden Aufgaben aufgaben unterscheiden können. 
+            //let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
             let newDone = document.createElement("i"); //Checkbox vorne
             let newTask = document.createElement("input");
             newTask.readOnly = true;
@@ -45,6 +59,7 @@ var ToDo;
             newPerson.readOnly = true;
             let newDate = document.createElement("input");
             newDate.type = "datetime-local";
+            newDate.readOnly = true;
             let newLabel = document.createElement("label");
             let newCheck = document.createElement("i"); // in Bearbeitung Checkbox
             let newButton = document.createElement("button");
@@ -80,6 +95,33 @@ var ToDo;
             newDiv.appendChild(newTrash);
             wrapper.appendChild(newDiv);
             newButton.addEventListener('click', enableEditing);
+            newDone.addEventListener('click', checkboxfrontChange);
+            newCheck.addEventListener('click', checkboxbehindChange2);
+            newTrash.addEventListener('click', deleteTodo);
+        }
+    }
+    function checkboxfrontChange(_event) {
+        let target = _event.target; //_event ist das MouseEvent
+        let parent = target.parentElement; // boss ist der parent von target(Ceckboxfront)
+        let id = Number(parent.id); // wir machen aus den einzelnen Divs ids strings numbers
+        todoliste[id].done = !todoliste[id].done; // Das Gegentei soll ausgeführt werden. Dies folgt in der if else verzweigung 
+        if (todoliste[id].done == true) {
+            target.className = "far fa-check-circle";
+        }
+        else {
+            target.className = "far fa-circle";
+        }
+    }
+    function checkboxbehindChange2(_event) {
+        let target = _event.target;
+        let parent = target.parentElement;
+        let id = Number(parent.id);
+        todoliste[id].inprogress = !todoliste[id].inprogress;
+        if (todoliste[id].inprogress == true) {
+            target.className = "far fa-check-circle";
+        }
+        else {
+            target.className = "far fa-circle";
         }
     }
     function createTodo() {
