@@ -43,10 +43,10 @@ var ToDo;
     }
     function arrayPush() {
         todoliste.push({ done: false, task: taskinput.value, comment: commentinput.value, person: personinput.value, date: dateinput.value, inprogress: secondcheckbox.checked });
-        console.log(todoliste);
-        wrapper.innerHTML = "";
+        //console.log(todoliste);
+        wrapper.innerHTML = ""; // Beim Erstellen von einem neuen Listenpunkte werden die HTML Elemente gelöscht und wieder hergestellt, zusammen mit dem neuen Listenpunkt. Unsere Beispiele werden nur aus dem sichtbaren ereich entfernt und wieder hinzugefügt.
         callInterface();
-        taskinput.value = "";
+        taskinput.value = ""; // Nach dem drücken des Fertig-Buttons sind die Inputfelder wieder leer
         commentinput.value = "";
         personinput.value = "";
         dateinput.value = "";
@@ -133,9 +133,6 @@ var ToDo;
             target.className = "far fa-circle";
         }
     }
-    function createTodo() {
-        console.log("Ich bin fertig!");
-    }
     function enableEditing(_event) {
         console.log("Ich bearbeite es!");
         let target = _event.target; // Target ist der Bearbeitungsbutton
@@ -164,13 +161,11 @@ var ToDo;
             }
         }
     }
-    function finishEditing(_event) {
-        if (_event.key === 'Enter') {
-        }
-        console.log("Ich bin fertig!");
-    }
-    function deleteTodo() {
-        console.log("Ich schmeisse es weg!");
+    function deleteTodo(_event) {
+        //console.log("Ich schmeisse es weg!");
+        let target = _event.target;
+        let parent = target.parentElement;
+        wrapper.removeChild(parent);
     }
 })(ToDo || (ToDo = {}));
 //# sourceMappingURL=toDoList.js.map

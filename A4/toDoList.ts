@@ -64,10 +64,10 @@ namespace ToDo {
 
     function arrayPush(){
         todoliste.push({ done: false, task: taskinput.value, comment: commentinput.value, person: personinput.value, date: dateinput.value, inprogress: secondcheckbox.checked });
-        console.log(todoliste);
-        wrapper.innerHTML = "";
+        //console.log(todoliste);
+        wrapper.innerHTML = "";  // Beim Erstellen von einem neuen Listenpunkte werden die HTML Elemente gelöscht und wieder hergestellt, zusammen mit dem neuen Listenpunkt. Unsere Beispiele werden nur aus dem sichtbaren ereich entfernt und wieder hinzugefügt.
         callInterface();
-        taskinput.value = "";
+        taskinput.value = "";  // Nach dem drücken des Fertig-Buttons sind die Inputfelder wieder leer
         commentinput.value = "";
         personinput.value = "";
         dateinput.value = "";
@@ -180,9 +180,7 @@ namespace ToDo {
     }
 
 
-    function createTodo() {
-        console.log("Ich bin fertig!");
-    }
+   
 
     function enableEditing(_event: MouseEvent) {
 
@@ -215,14 +213,12 @@ namespace ToDo {
         }
 
     }
-    function finishEditing(_event: KeyboardEvent) {
-        if (_event.key === 'Enter') {
-
-        }
-        console.log("Ich bin fertig!");
-    }
-    function deleteTodo() {
-        console.log("Ich schmeisse es weg!");
+   
+    function deleteTodo(_event: MouseEvent) {
+        //console.log("Ich schmeisse es weg!");
+        let target: HTMLElement = <HTMLElement>_event.target;
+        let parent: HTMLElement = <HTMLElement>target.parentElement;
+        wrapper.removeChild(parent);
 
     }
 
