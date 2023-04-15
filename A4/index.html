@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="toDoList.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+</head>
+
+<body>
+    <h1>ToDo-Liste</h1>
+    <p></p>
+    <h2>Erstelle eine Aufgabe</h2>
+
+    <div id="div">
+
+
+        <!--<button id="add">+</button>-->
+        <fieldset>
+            <!--<input type="checkbox" name="done"> -->
+            <input type="text" name="task" placeholder="Aufgabe">
+            <input type="text" name="comment" placeholder="Kommentar">
+            <!--<textarea name="Area" id="comment" cols="30" rows="6" placeholder="Kommentar"></textarea> -->
+            <!--<input type="text" name="person" placeholder="Name">-->
+
+            <input type="text" name="personDatalist" list="options" placeholder="Name" />
+            <datalist id="options">
+                <option value="Luisa"> </option>
+                <option value="Mike"> </option>
+                <option value="Marie"> </option>
+                <option value="Jannik"> </option>
+                <option value="Vanessa"> </option>
+                <option value="Stella"> </option>
+                <option value="Eric"> </option>
+            </datalist>
+
+            <input type="datetime-local" name="deadline">
+            <label for="checkB"> in Bearbeitung:</label>
+            <input type="checkbox" name="inprogress" id="checkB">
+            <button id="finish">Fertig</button>
+        </fieldset>
+
+    </div>
+
+    <div class="boss">
+        <input type="checkbox" name="done">
+        <input type="text" name="task" placeholder="Aufgabe" value="Spülmaschine ausräumen">
+        <input type="text" name="comment" placeholder="Kommentar" value="Bitte bis morgen erledigen.">
+        <input type="text" name="person" placeholder="Name" value="Luisa">
+        <input type="datetime-local" name="deadline">
+        <label> in Bearbeitung:</label>
+        <input type="checkbox" name="inprogress">
+        <button id="edit">Ändern</button>
+        <i class="fa fa-trash-alt" id="trashbin"></i>
+    </div>
+</body>
+
+</html>

@@ -88,11 +88,12 @@ var ToDo;
     function enableEditing() {
         console.log("Ich bearbeite es!");
     }
-    function finishEditing(_event) {
-        if (_event.key === 'Enter') {
-        }
-        console.log("Ich bin fertig!");
-    }
+    /* function finishEditing(_event: KeyboardEvent) {
+         if (_event.key === 'Enter') {
+ 
+         }
+         console.log("Ich bin fertig!");
+     }*/
     function deleteTodo() {
         console.log("Ich schmeisse es weg!");
     }
