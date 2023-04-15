@@ -42,6 +42,15 @@ var ToDo;
         //document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
     }
     function arrayPush() {
+        todoliste.push({ done: false, task: taskinput.value, comment: commentinput.value, person: personinput.value, date: dateinput.value, inprogress: secondcheckbox.checked });
+        console.log(todoliste);
+        wrapper.innerHTML = "";
+        callInterface();
+        taskinput.value = "";
+        commentinput.value = "";
+        personinput.value = "";
+        dateinput.value = "";
+        secondcheckbox.checked = false;
     }
     function callInterface() {
         for (let i = 0; i < todoliste.length; i++) {
@@ -127,8 +136,33 @@ var ToDo;
     function createTodo() {
         console.log("Ich bin fertig!");
     }
-    function enableEditing() {
+    function enableEditing(_event) {
         console.log("Ich bearbeite es!");
+        let target = _event.target; // Target ist der Bearbeitungsbutton
+        let parent = target.parentElement; // Parent ist der div boss
+        let inputElements = parent.querySelectorAll("input"); // von dem Parent (in unserem Fall div boss) werden alle inputelemente ausgewäht/selektiert und in einer Liste von Inputelementen gespeichert.
+        let id = Number(parent.id); //ids von den Divs
+        for (let i = 0; i < inputElements.length; i++) {
+            if (inputElements[i].readOnly == true) {
+                inputElements[i].readOnly = false;
+                console.log(inputElements[i]);
+            }
+            else {
+                inputElements[i].readOnly = true;
+                if (i == 0) {
+                    todoliste[id].task = inputElements[i].value; // todoliste [id] sucht uns den richtigen boss div raus und dann die Stelle mit .task (denn wir wollen den Task ändern und nicht den z.B. den Comment). In dem Div und Inputfeld Task soll nun der Wert/value in dem Inputfeld (hier task) übernommen werden.
+                }
+                if (i == 1) {
+                    todoliste[id].comment = inputElements[i].value;
+                }
+                if (i == 2) {
+                    todoliste[id].person = inputElements[i].value;
+                }
+                if (i == 3) {
+                    todoliste[id].date = inputElements[i].value;
+                }
+            }
+        }
     }
     function finishEditing(_event) {
         if (_event.key === 'Enter') {
