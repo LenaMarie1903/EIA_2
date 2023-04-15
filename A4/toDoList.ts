@@ -41,11 +41,29 @@ namespace ToDo {
 
     window.addEventListener("load", handleload);
 
+    let taskinput: HTMLInputElement = <HTMLInputElement>document.querySelector("#TASK");
+    let commentinput: HTMLInputElement = <HTMLInputElement>document.querySelector("#COMMENT");
+    let personinput: HTMLInputElement = <HTMLInputElement>document.querySelector("#PERSON");
+    let dateinput: HTMLInputElement = <HTMLInputElement>document.querySelector("#DATE");
+    let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
+    let secondcheckbox: HTMLInputElement = <HTMLInputElement>document.querySelector("#checkB");
+
     function handleload(_event: Event): void {
-        document.querySelector("#finish")!.addEventListener('click', createTodo);
-        document.querySelector("#edit")!.addEventListener('click', enableEditing);
-        document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
+        taskinput.value = "";                      //Damit die Inputfelder beim Neuladen leer sind 
+        commentinput.value = "";
+        personinput.value = "";
+        dateinput.value = "";
+        secondcheckbox.checked = false;            //Checkbox soll grundsetzlich nicht angekreuzt sein 
         callInterface();
+        document.querySelector("#finish")!.addEventListener('click', arrayPush);
+        //document.querySelector("#edit")!.addEventListener('click', enableEditing);
+        //document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
+       
+
+    }
+
+    function arrayPush(){
+
 
     }
 
@@ -56,7 +74,8 @@ namespace ToDo {
 
             let newDiv = document.createElement("div");
             newDiv.className= "newDivCSS"
-            let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
+            newDiv.id = ""+i;  // Damit wir später die verscheiden newDiv aus den verscheiden Aufgaben aufgaben unterscheiden können. 
+            //let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
 
             let newDone = document.createElement("i");  //Checkbox vorne
             let newTask = document.createElement("input");
@@ -67,6 +86,7 @@ namespace ToDo {
             newPerson.readOnly = true;
             let newDate = document.createElement("input");
             newDate.type = "datetime-local";
+            newDate.readOnly= true;
             let newLabel = document.createElement("label");
             let newCheck = document.createElement("i"); // in Bearbeitung Checkbox
             let newButton = document.createElement("button");
@@ -114,10 +134,40 @@ namespace ToDo {
             wrapper.appendChild(newDiv);
 
             newButton.addEventListener('click', enableEditing);
+            newDone.addEventListener('click', checkboxfrontChange);
+            newCheck.addEventListener('click', checkboxbehindChange2);
+            newTrash.addEventListener('click', deleteTodo);
         }
 
 
 
+
+    }
+
+    function checkboxfrontChange(_event: MouseEvent) {
+        let target: HTMLElement = <HTMLElement>_event.target;      //_event ist das MouseEvent
+        let parent: HTMLElement = <HTMLElement>target.parentElement; // boss ist der parent von target(Ceckboxfront)
+        let id: number = Number(parent.id);                          // wir machen aus den einzelnen Divs ids strings numbers
+        todoliste[id].done = !todoliste[id].done;                    // Das Gegentei soll ausgeführt werden. Dies folgt in der if else verzweigung 
+        if (todoliste[id].done == true) {
+            target.className = "far fa-check-circle";
+        }
+        else {
+            target.className = "far fa-circle";
+        }
+
+    }
+    function checkboxbehindChange2(_event: MouseEvent) {
+        let target: HTMLElement = <HTMLElement>_event.target;
+        let parent: HTMLElement = <HTMLElement>target.parentElement;
+        let id: number = Number(parent.id);
+        todoliste[id].inprogress = !todoliste[id].inprogress;
+        if (todoliste[id].inprogress == true) {
+            target.className = "far fa-check-circle";
+        }
+        else {
+            target.className = "far fa-circle";
+        }
 
     }
 
