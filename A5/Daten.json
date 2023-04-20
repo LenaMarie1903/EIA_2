@@ -1,0 +1,19 @@
+[{
+    "done": false,
+    "task": "Spülmaschine ausräumen",
+    "comment": "Bitte bis morgen erledigen.",
+    "person": "Luisa",
+    "date": "2023-04-29T14:00",
+    "inprogress": true
+
+},
+{
+    "done": false,
+    "task": "Fenster putzen",
+    "comment": "Bitte Glasreiniger benutzen",
+    "person": "Jannik",
+    "date": "2023-05-01T16:00",
+    "inprogress": true
+
+}
+]
