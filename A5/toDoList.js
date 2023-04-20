@@ -6,13 +6,16 @@ Datum: <06.04.2023>
 In Zusammenarbeit mit Medin Flaig */
 var ToDo;
 (function (ToDo) {
-    let todoliste = [{
+    let todoliste;
+    /*
+        let todoliste: ToDos[] = [{
             done: false,
             task: "Spülmaschine ausräumen",
             comment: "Bitte bis morgen erledigen.",
             person: "Luisa",
             date: "2023-04-29T14:00",
             inprogress: true,
+    
         },
         {
             done: false,
@@ -21,8 +24,9 @@ var ToDo;
             person: "Jannik",
             date: "2023-05-01T16:00",
             inprogress: true,
+    
         }
-    ];
+        ];*/
     window.addEventListener("load", handleload);
     let taskinput = document.querySelector("#TASK");
     let commentinput = document.querySelector("#COMMENT");
@@ -30,12 +34,19 @@ var ToDo;
     let dateinput = document.querySelector("#DATE");
     let wrapper = document.querySelector(".boss");
     let secondcheckbox = document.querySelector("#checkB");
+    async function requestData(_url) {
+        let response = await fetch(_url);
+        let responseText = response.text;
+        console.log("Response", response);
+        console.log(response.text());
+    }
     function handleload(_event) {
         taskinput.value = ""; //Damit die Inputfelder beim Neuladen leer sind 
         commentinput.value = "";
         personinput.value = "";
         dateinput.value = "";
         secondcheckbox.checked = false; //Checkbox soll grundsetzlich nicht angekreuzt sein 
+        requestData("https://lenamarie1903.github.io/EIA_2/A5/Daten.json");
         callInterface();
         document.querySelector("#finish").addEventListener('click', arrayPush);
         //document.querySelector("#edit")!.addEventListener('click', enableEditing);

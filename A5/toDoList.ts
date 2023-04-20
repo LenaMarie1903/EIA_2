@@ -18,7 +18,8 @@ namespace ToDo {
         inprogress: boolean;
 
     }
-
+    let todoliste: ToDos[];
+/*
     let todoliste: ToDos[] = [{
         done: false,
         task: "Spülmaschine ausräumen",
@@ -37,7 +38,7 @@ namespace ToDo {
         inprogress: true,
 
     }
-    ];
+    ];*/
 
     window.addEventListener("load", handleload);
 
@@ -48,17 +49,26 @@ namespace ToDo {
     let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
     let secondcheckbox: HTMLInputElement = <HTMLInputElement>document.querySelector("#checkB");
 
+    async function requestData(_url:RequestInfo): Promise<void> {
+        let response: Response= await fetch (_url);
+        let responseText= response.text;
+        console.log("Response", response);
+        console.log(response.text());
+        
+    }
+
     function handleload(_event: Event): void {
         taskinput.value = "";                      //Damit die Inputfelder beim Neuladen leer sind 
         commentinput.value = "";
         personinput.value = "";
         dateinput.value = "";
         secondcheckbox.checked = false;            //Checkbox soll grundsetzlich nicht angekreuzt sein 
+        requestData("https://lenamarie1903.github.io/EIA_2/A5/Daten.json");
         callInterface();
         document.querySelector("#finish")!.addEventListener('click', arrayPush);
         //document.querySelector("#edit")!.addEventListener('click', enableEditing);
         //document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
-       
+      
 
     }
 
