@@ -36,9 +36,17 @@ var ToDo;
     let secondcheckbox = document.querySelector("#checkB");
     async function requestData(_url) {
         let response = await fetch(_url);
-        let responseText = response.text;
         console.log("Response", response);
-        console.log(response.text());
+        let seperateData = await response.text();
+        todoliste = JSON.parse(seperateData);
+        console.log(todoliste);
+        callInterface();
+    }
+    async function sendData() {
+        let url = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json";
+        let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
+        alert("send Data");
     }
     function handleload(_event) {
         taskinput.value = ""; //Damit die Inputfelder beim Neuladen leer sind 
@@ -47,7 +55,7 @@ var ToDo;
         dateinput.value = "";
         secondcheckbox.checked = false; //Checkbox soll grundsetzlich nicht angekreuzt sein 
         requestData("https://lenamarie1903.github.io/EIA_2/A5/Daten.json");
-        callInterface();
+        // callInterface();
         document.querySelector("#finish").addEventListener('click', arrayPush);
         //document.querySelector("#edit")!.addEventListener('click', enableEditing);
         //document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
@@ -68,7 +76,7 @@ var ToDo;
             console.log(todoliste[i]);
             let newDiv = document.createElement("div");
             newDiv.className = "newDivCSS";
-            newDiv.id = "" + i; // Damit wir später die verscheiden newDiv aus den verscheiden Aufgaben aufgaben unterscheiden können. 
+            newDiv.id = "" + i; // Damit wir später die verscheiden newDiv aus den verscheiden Aufgaben aufgaben unterscheiden können.  Durch """ wird i von Number zu einem strind (denn string + number = string)
             //let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
             let newDone = document.createElement("i"); //Checkbox vorne
             let newTask = document.createElement("input");
@@ -119,6 +127,7 @@ var ToDo;
             newCheck.addEventListener('click', checkboxbehindChange2);
             newTrash.addEventListener('click', deleteTodo);
         }
+        sendData();
     }
     function checkboxfrontChange(_event) {
         let target = _event.target; //_event ist das MouseEvent
