@@ -62,10 +62,27 @@ namespace ToDo {
     }
 
     async function sendData() {
+        console.log("send Data")
         let url : string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"  
         let query: URLSearchParams= new URLSearchParams (<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
         await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
         alert("send Data");
+    }
+
+    async function editData() {
+        console.log("edit Data")
+        let url : string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"  
+        let query: URLSearchParams= new URLSearchParams (<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value );
+        await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
+        alert("edit Data");
+    }
+
+    async function deleteData() {
+        console.log("delete Data")
+        let url : string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"  
+        let query: URLSearchParams= new URLSearchParams (<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value );
+        await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
+        alert("delete Data");
     }
 
     function handleload(_event: Event): void {
@@ -171,6 +188,8 @@ namespace ToDo {
         }
 
         sendData();
+        editData();
+        deleteData();
 
 
 

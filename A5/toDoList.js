@@ -43,10 +43,25 @@ var ToDo;
         callInterface();
     }
     async function sendData() {
+        console.log("send Data");
         let url = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json";
         let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value);
         await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
         alert("send Data");
+    }
+    async function editData() {
+        console.log("edit Data");
+        let url = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json";
+        let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
+        alert("edit Data");
+    }
+    async function deleteData() {
+        console.log("delete Data");
+        let url = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json";
+        let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
+        alert("delete Data");
     }
     function handleload(_event) {
         taskinput.value = ""; //Damit die Inputfelder beim Neuladen leer sind 
@@ -128,6 +143,8 @@ var ToDo;
             newTrash.addEventListener('click', deleteTodo);
         }
         sendData();
+        editData();
+        deleteData();
     }
     function checkboxfrontChange(_event) {
         let target = _event.target; //_event ist das MouseEvent
