@@ -85,6 +85,7 @@ var ToDo;
         personinput.value = "";
         dateinput.value = "";
         secondcheckbox.checked = false;
+        sendData();
     }
     function callInterface() {
         for (let i = 0; i < todoliste.length; i++) {
@@ -142,9 +143,6 @@ var ToDo;
             newCheck.addEventListener('click', checkboxbehindChange2);
             newTrash.addEventListener('click', deleteTodo);
         }
-        sendData();
-        editData();
-        deleteData();
     }
     function checkboxfrontChange(_event) {
         let target = _event.target; //_event ist das MouseEvent
@@ -197,12 +195,14 @@ var ToDo;
                 }
             }
         }
+        editData();
     }
     function deleteTodo(_event) {
         //console.log("Ich schmeisse es weg!");
         let target = _event.target;
         let parent = target.parentElement;
         wrapper.removeChild(parent);
+        deleteData();
     }
 })(ToDo || (ToDo = {}));
 //# sourceMappingURL=toDoList.js.map

@@ -19,26 +19,26 @@ namespace ToDo {
 
     }
     let todoliste: ToDos[];
-/*
-    let todoliste: ToDos[] = [{
-        done: false,
-        task: "Spülmaschine ausräumen",
-        comment: "Bitte bis morgen erledigen.",
-        person: "Luisa",
-        date: "2023-04-29T14:00",
-        inprogress: true,
-
-    },
-    {
-        done: false,
-        task: "Fenster putzen",
-        comment: "Bitte Glasreiniger benutzen",
-        person: "Jannik",
-        date: "2023-05-01T16:00",
-        inprogress: true,
-
-    }
-    ];*/
+    /*
+        let todoliste: ToDos[] = [{
+            done: false,
+            task: "Spülmaschine ausräumen",
+            comment: "Bitte bis morgen erledigen.",
+            person: "Luisa",
+            date: "2023-04-29T14:00",
+            inprogress: true,
+    
+        },
+        {
+            done: false,
+            task: "Fenster putzen",
+            comment: "Bitte Glasreiniger benutzen",
+            person: "Jannik",
+            date: "2023-05-01T16:00",
+            inprogress: true,
+    
+        }
+        ];*/
 
     window.addEventListener("load", handleload);
 
@@ -49,38 +49,38 @@ namespace ToDo {
     let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
     let secondcheckbox: HTMLInputElement = <HTMLInputElement>document.querySelector("#checkB");
 
-    async function requestData(_url:RequestInfo): Promise<void> {
-        let response: Response= await fetch (_url);
+    async function requestData(_url: RequestInfo): Promise<void> {
+        let response: Response = await fetch(_url);
         console.log("Response", response);
 
-        let seperateData : string = await response.text();
-        todoliste= JSON.parse(seperateData);
+        let seperateData: string = await response.text();
+        todoliste = JSON.parse(seperateData);
         console.log(todoliste);
         callInterface();
-        
-        
+
+
     }
 
     async function sendData() {
         console.log("send Data")
-        let url : string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"  
-        let query: URLSearchParams= new URLSearchParams (<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        let url: string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"
+        let query: URLSearchParams = new URLSearchParams(<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
         await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
         alert("send Data");
     }
 
     async function editData() {
         console.log("edit Data")
-        let url : string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"  
-        let query: URLSearchParams= new URLSearchParams (<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value );
+        let url: string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"
+        let query: URLSearchParams = new URLSearchParams(<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
         await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
         alert("edit Data");
     }
 
     async function deleteData() {
         console.log("delete Data")
-        let url : string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"  
-        let query: URLSearchParams= new URLSearchParams (<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value );
+        let url: string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"
+        let query: URLSearchParams = new URLSearchParams(<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
         await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
         alert("delete Data");
     }
@@ -92,15 +92,15 @@ namespace ToDo {
         dateinput.value = "";
         secondcheckbox.checked = false;            //Checkbox soll grundsetzlich nicht angekreuzt sein 
         requestData("https://lenamarie1903.github.io/EIA_2/A5/Daten.json");
-       // callInterface();
+        // callInterface();
         document.querySelector("#finish")!.addEventListener('click', arrayPush);
         //document.querySelector("#edit")!.addEventListener('click', enableEditing);
         //document.querySelector("#trashbin")!.addEventListener('click', deleteTodo);
-      
+
 
     }
 
-    function arrayPush(){
+    function arrayPush() {
         todoliste.push({ done: false, task: taskinput.value, comment: commentinput.value, person: personinput.value, date: dateinput.value, inprogress: secondcheckbox.checked });
         //console.log(todoliste);
         wrapper.innerHTML = "";  // Beim Erstellen von einem neuen Listenpunkte werden die HTML Elemente gelöscht und wieder hergestellt, zusammen mit dem neuen Listenpunkt. Unsere Beispiele werden nur aus dem sichtbaren ereich entfernt und wieder hinzugefügt.
@@ -110,6 +110,7 @@ namespace ToDo {
         personinput.value = "";
         dateinput.value = "";
         secondcheckbox.checked = false;
+        sendData();
 
     }
 
@@ -119,8 +120,8 @@ namespace ToDo {
             console.log(todoliste[i]);
 
             let newDiv = document.createElement("div");
-            newDiv.className= "newDivCSS"
-            newDiv.id = ""+i;  // Damit wir später die verscheiden newDiv aus den verscheiden Aufgaben aufgaben unterscheiden können.  Durch """ wird i von Number zu einem strind (denn string + number = string)
+            newDiv.className = "newDivCSS"
+            newDiv.id = "" + i;  // Damit wir später die verscheiden newDiv aus den verscheiden Aufgaben aufgaben unterscheiden können.  Durch """ wird i von Number zu einem strind (denn string + number = string)
             //let wrapper: HTMLElement = <HTMLElement>document.querySelector(".boss");
 
             let newDone = document.createElement("i");  //Checkbox vorne
@@ -132,7 +133,7 @@ namespace ToDo {
             newPerson.readOnly = true;
             let newDate = document.createElement("input");
             newDate.type = "datetime-local";
-            newDate.readOnly= true;
+            newDate.readOnly = true;
             let newLabel = document.createElement("label");
             let newCheck = document.createElement("i"); // in Bearbeitung Checkbox
             let newButton = document.createElement("button");
@@ -153,7 +154,7 @@ namespace ToDo {
             newDate.value = todoliste[i].date;
             newLabel.innerHTML = "in Bearbeitung";
             newButton.innerHTML = "Bearbeiten";
-         
+
 
             if (todoliste[i].inprogress == true) {
                 newCheck.className = "far fa-check-circle";
@@ -163,14 +164,14 @@ namespace ToDo {
 
             }
 
-            
+
             newDiv.appendChild(newDone);
             newDiv.appendChild(newTask);
             newDiv.appendChild(newComment);
             newDiv.appendChild(newPerson);
             newDiv.append(newDate);
             newDiv.appendChild(newButton);
-            
+
 
             newCheck.appendChild(newLabel);
             newDiv.appendChild(newCheck);
@@ -179,7 +180,7 @@ namespace ToDo {
 
             wrapper.appendChild(newDiv);
 
-            
+
 
             newButton.addEventListener('click', enableEditing);
             newDone.addEventListener('click', checkboxfrontChange);
@@ -187,9 +188,9 @@ namespace ToDo {
             newTrash.addEventListener('click', deleteTodo);
         }
 
-        sendData();
-        editData();
-        deleteData();
+       
+
+
 
 
 
@@ -224,7 +225,7 @@ namespace ToDo {
     }
 
 
-   
+
 
     function enableEditing(_event: MouseEvent) {
 
@@ -240,29 +241,30 @@ namespace ToDo {
             }
             else {
                 inputElements[i].readOnly = true;
-                if(i==0){
+                if (i == 0) {
                     todoliste[id].task = inputElements[i].value;  // todoliste [id] sucht uns den richtigen boss div raus und dann die Stelle mit .task (denn wir wollen den Task ändern und nicht den z.B. den Comment). In dem Div und Inputfeld Task soll nun der Wert/value in dem Inputfeld (hier task) übernommen werden.
                 }
-                if(i==1){
+                if (i == 1) {
                     todoliste[id].comment = inputElements[i].value;
                 }
-                if(i==2){
+                if (i == 2) {
                     todoliste[id].person = inputElements[i].value;
                 }
-                if(i==3){
+                if (i == 3) {
                     todoliste[id].date = inputElements[i].value;
                 }
-                
+
             }
         }
-
+        editData();
     }
-   
+
     function deleteTodo(_event: MouseEvent) {
         //console.log("Ich schmeisse es weg!");
         let target: HTMLElement = <HTMLElement>_event.target;
         let parent: HTMLElement = <HTMLElement>target.parentElement;
         wrapper.removeChild(parent);
+        deleteData();
 
     }
 
