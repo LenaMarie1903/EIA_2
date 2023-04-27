@@ -49,17 +49,17 @@ var ToDo;
         await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
         alert("send Data");
     }
-    async function editData() {
+    async function editData(_parentIDedit) {
         console.log("edit Data");
         let url = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json";
-        let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value + _parentIDedit);
         await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
         alert("edit Data");
     }
-    async function deleteData() {
+    async function deleteData(_parentID) {
         console.log("delete Data");
         let url = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json";
-        let query = new URLSearchParams(+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        let query = new URLSearchParams(+_parentID);
         await fetch(url + "?" + query.toString()); // Wir "kleben" an die URL die Inputwerte dran.
         alert("delete Data");
     }
@@ -172,6 +172,7 @@ var ToDo;
         console.log("Ich bearbeite es!");
         let target = _event.target; // Target ist der Bearbeitungsbutton
         let parent = target.parentElement; // Parent ist der div boss
+        console.log(parent.id);
         let inputElements = parent.querySelectorAll("input"); // von dem Parent (in unserem Fall div boss) werden alle inputelemente ausgewäht/selektiert und in einer Liste von Inputelementen gespeichert.
         let id = Number(parent.id); //ids von den Divs
         for (let i = 0; i < inputElements.length; i++) {
@@ -195,14 +196,15 @@ var ToDo;
                 }
             }
         }
-        editData();
+        editData(parent.id);
     }
     function deleteTodo(_event) {
         //console.log("Ich schmeisse es weg!");
         let target = _event.target;
         let parent = target.parentElement;
+        console.log(parent.id);
         wrapper.removeChild(parent);
-        deleteData();
+        deleteData(parent.id);
     }
 })(ToDo || (ToDo = {}));
 //# sourceMappingURL=toDoList.js.map

@@ -69,18 +69,18 @@ namespace ToDo {
         alert("send Data");
     }
 
-    async function editData() {
+    async function editData(_parentIDedit : string) {
         console.log("edit Data")
         let url: string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"
-        let query: URLSearchParams = new URLSearchParams(<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        let query: URLSearchParams = new URLSearchParams(<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value + _parentIDedit);
         await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
         alert("edit Data");
     }
 
-    async function deleteData() {
+    async function deleteData(_parentID:string) {
         console.log("delete Data")
         let url: string = "https://lenamarie1903.github.io/EIA_2/A5/Daten.json"
-        let query: URLSearchParams = new URLSearchParams(<any>+taskinput.value + commentinput.value + personinput.value + dateinput.value);
+        let query: URLSearchParams = new URLSearchParams(<any>+_parentID);
         await fetch(url + "?" + query.toString());  // Wir "kleben" an die URL die Inputwerte dran.
         alert("delete Data");
     }
@@ -232,6 +232,7 @@ namespace ToDo {
         console.log("Ich bearbeite es!");
         let target: HTMLElement = <HTMLElement>_event.target;              // Target ist der Bearbeitungsbutton
         let parent: HTMLElement = <HTMLElement>target.parentElement;       // Parent ist der div boss
+        console.log(parent.id); 
         let inputElements: NodeListOf<HTMLInputElement> = parent.querySelectorAll("input");  // von dem Parent (in unserem Fall div boss) werden alle inputelemente ausgewäht/selektiert und in einer Liste von Inputelementen gespeichert.
         let id: number = Number(parent.id);                  //ids von den Divs
         for (let i: number = 0; i < inputElements.length; i++) {
@@ -256,15 +257,16 @@ namespace ToDo {
 
             }
         }
-        editData();
+        editData(parent.id);
     }
 
     function deleteTodo(_event: MouseEvent) {
         //console.log("Ich schmeisse es weg!");
         let target: HTMLElement = <HTMLElement>_event.target;
         let parent: HTMLElement = <HTMLElement>target.parentElement;
+        console.log(parent.id)
         wrapper.removeChild(parent);
-        deleteData();
+        deleteData(parent.id);
 
     }
 
